@@ -1,0 +1,5 @@
+c:\users\owner\documents\visual studio 2015\Projects\challengeSimpleDarts\Darts\bin\Debug\Darts.dll
+c:\users\owner\documents\visual studio 2015\Projects\challengeSimpleDarts\Darts\bin\Debug\Darts.pdb
+c:\users\owner\documents\visual studio 2015\Projects\challengeSimpleDarts\Darts\obj\Debug\Darts.csprojResolveAssemblyReference.cache
+c:\users\owner\documents\visual studio 2015\Projects\challengeSimpleDarts\Darts\obj\Debug\Darts.dll
+c:\users\owner\documents\visual studio 2015\Projects\challengeSimpleDarts\Darts\obj\Debug\Darts.pdb
