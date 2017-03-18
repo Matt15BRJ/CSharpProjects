@@ -11,18 +11,21 @@ namespace Darts
         public bool isDoubleRing { get; set; }
         public bool isTripleRing { get; set; }
         public bool isInnerBullsEye { get; set; }
-        
-        public int Throw(Random random)
+        public int DartThrowScore { get; set; }
+
+        public void Throw(Random random)
         {
-            int dartThrow = random.Next(0,21);
-            checkForMultiplier(dartThrow, random);                    
-            return dartThrow;
+            DartThrowScore = random.Next(0, 21);
+            checkForMultiplier(random);
         }
 
-        private void checkForMultiplier(int dartThrow, Random random)
+        private void checkForMultiplier(Random random)
         {
+            isDoubleRing = false;
+            isTripleRing = false;
+            isInnerBullsEye = false;
             int dartThrowPrecise = random.Next(1, 21);
-            if (dartThrow == 0 && dartThrowPrecise == 1)
+            if (DartThrowScore == 0 && dartThrowPrecise == 1)
                 isInnerBullsEye = true;
             else
                 checkDoubleTripleRing(dartThrowPrecise);
