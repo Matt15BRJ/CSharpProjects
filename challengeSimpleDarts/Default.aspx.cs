@@ -19,10 +19,11 @@ namespace challengeSimpleDarts
 
         protected void throwButton_Click(object sender, EventArgs e)
         {
+            Game game = new Game();
             Game player1 = new Game();
             Game player2 = new Game();
             getPlayerInfo(player1, player2);
-            playDartGame(player1,player2);
+            game.playDartGame(player1,player2,random);
             displayScore(player1, player2);
             displayWinner(player1,player2);
         }        
@@ -33,16 +34,7 @@ namespace challengeSimpleDarts
             player1.Score = 0;
             player2.PlayerName = player2NameTextBox.Text;
             player2.Score = 0;
-        }
-
-        private void playDartGame(Game player1, Game player2)
-        {
-            while (player1.Score < 300 && player2.Score < 300)
-            {
-                player1.Score = player1.takeATurn(player1.Score, random);
-                player2.Score = player2.takeATurn(player2.Score, random);
-            }
-        }
+        }        
 
         private void displayScore(Game player1, Game player2)
         {

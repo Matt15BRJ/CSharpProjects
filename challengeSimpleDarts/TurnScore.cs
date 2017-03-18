@@ -2,40 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Darts;
 
 namespace challengeSimpleDarts
 {
     public static class TurnScore
     {
-
-        public static int checkScore(int dartThrow, Random random)
+        public static void checkScore(Dart playerTurn, Game player)
         {
-            if (dartThrow == 0)
-                checkForBullsEye(dartThrow, random);
-            else
-                checkForSingleDoubleTripleScore(dartThrow, random);
-            return dartThrow;
+            int dartScore = playerTurn.DartThrowScore;
+            if (playerTurn.DartThrowScore == 0)
+                checkForBullsEye(playerTurn, dartScore);
+            if (playerTurn.DartThrowScore != 0)
+                checkForSingleDoubleTripleScore(playerTurn, dartScore);            
+            player.Score += dartScore;            
         }
-        public static int checkForBullsEye(int dartThrow, Random random)
+        public static void checkForBullsEye(Dart playerTurn, int dartScore)
         {
-            int innerBullsEye = random.Next(1, 20);
-            if (innerBullsEye == 1)
-                dartThrow = 50;
+            if (playerTurn.isInnerBullsEye)
+                dartScore = 50;
             else
-                dartThrow = 25;
-            return dartThrow;
+                dartScore = 25;            
         }
 
-        public static int checkForSingleDoubleTripleScore(int dartThrow, Random random)
+        public static void checkForSingleDoubleTripleScore(Dart playerTurn, int dartScore)
         {
-            int singleDoubleTripleScore = random.Next(1, 20);
-            if (singleDoubleTripleScore == 2)
-                dartThrow = dartThrow * 2;
-            if (singleDoubleTripleScore == 3)
-                dartThrow = dartThrow * 3;
-            //else
-              //  return dartThrow;
-            return dartThrow;
+            if (playerTurn.isDoubleRing)
+                dartScore = playerTurn.DartThrowScore * 2;
+            if (playerTurn.isTripleRing)
+                dartScore = playerTurn.DartThrowScore * 3;            
         }
     }
 }
